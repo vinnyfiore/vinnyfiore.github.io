@@ -1,8 +1,9 @@
 #sideNav {
-  .navbar-brand {}
+  // .navbar-brand {} // Removed empty ruleset
+
   .navbar-nav .nav-item .nav-link {
     font-weight: 600;
-    text-transform: uppercase;
+    // text-transform: uppercase; // Removed for modern look
   }
 }
 
@@ -18,17 +19,21 @@
 
     width: $sidebar-base-width;
     height: 100vh;
+
     .navbar-brand {
       display: flex;
 
       margin: auto auto 0;
       padding: 0.5rem;
+
       .img-profile {
         max-width: 10rem;
         max-height: 10rem;
-        border: 0.5rem solid fade-out($white, 0.8);
+        border: none;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); // Modern shadow
       }
     }
+
     .navbar-collapse {
       display: flex;
       align-items: flex-start;
@@ -36,12 +41,15 @@
 
       width: 100%;
       margin-bottom: auto;
+
       .navbar-nav {
         flex-direction: column;
 
         width: 100%;
+
         .nav-item {
           display: block;
+
           .nav-link {
             display: block;
           }

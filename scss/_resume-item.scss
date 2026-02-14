@@ -1,25 +1,43 @@
 section.resume-section {
-  border-bottom: 1px solid $gray-300;
+  // border-bottom: 1px solid $gray-300; // Removed for cleaner card look
   padding-top: 5rem !important;
   padding-bottom: 5rem !important;
+
   .resume-item {
-    .resume-content {}
+    background: $white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    // .resume-content {} // Removed empty ruleset
+
     .resume-date {
       min-width: none;
     }
   }
 }
+
 @media (min-width: 768px) {
   section.resume-section {
     min-height: 100vh;
+
     .resume-item {
-      .resume-content {}
+      // .resume-content {} // Removed empty ruleset
+
       .resume-date {
         min-width: 18rem;
       }
     }
   }
 }
+
 @media (min-width: 992px) {
   section.resume-section {
     padding-top: 3rem !important;
