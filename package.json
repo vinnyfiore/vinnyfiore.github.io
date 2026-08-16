@@ -1,36 +1,27 @@
 {
-  "title": "Resume",
-  "name": "startbootstrap-resume",
-  "version": "4.0.0-beta.2",
-  "description": "Resume is a simple, yet elegant resume and CV theme for Bootstrap 4.",
-  "keywords": [
-    "css",
-    "sass",
-    "html",
-    "responsive",
-    "theme",
-    "template"
-  ],
-  "homepage": "https://startbootstrap.com/template-overviews/resume",
-  "bugs": {
-    "url": "https://github.com/BlackrockDigital/startbootstrap-resume/issues",
-    "email": "feedback@startbootstrap.com"
-  },
+  "name": "vinnyfiore.github.io",
+  "version": "1.0.0",
+  "description": "Vinny Fiore - Senior Software Engineer Portfolio",
+  "homepage": "https://vinnyfiore.com",
+  "author": "Vinny Fiore <vinrfiore@gmail.com>",
   "license": "MIT",
-  "author": "Start Bootstrap",
-  "contributors": [
-    "David Miller (http://davidmiller.io/)"
-  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/BlackrockDigital/startbootstrap-resume.git"
+    "url": "https://github.com/vinnyfiore/vinnyfiore.github.io.git"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "dev": "gulp watch",
+    "start": "gulp watch"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "^4.6.2",
     "devicons": "^1.8.0",
-    "jquery": "^3.2.1",
-    "popper.js": "^1.12.6",
-    "simple-line-icons": "^2.4.1"
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.7.1",
+    "jquery.easing": "^1.4.1",
+    "popper.js": "^1.16.1",
+    "simple-line-icons": "2.4.1"
   },
   "devDependencies": {
     "browser-sync": "^3.0.3",
@@ -39,7 +30,14 @@
     "gulp-header": "^2.0.9",
     "gulp-rename": "^2.0.0",
     "gulp-sass": "^5.1.0",
-    "sass": "^1.83.0",
-    "gulp-uglify": "^3.0.2"
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.102.0"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "overrides": {
+    "immutable": "^5.1.8"
   }
 }
