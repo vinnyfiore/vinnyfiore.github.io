@@ -19,7 +19,9 @@ const banner = ['/*!\n',
 // Compiles SCSS files from /scss into /css
 function css() {
   return gulp.src('scss/resume.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({
+      silenceDeprecations: ['legacy-js-api', 'import', 'global-builtin', 'color-functions']
+    }).on('error', sass.logError))
     .pipe(header(banner, {
       pkg: pkg
     }))
@@ -55,46 +57,52 @@ function minifyJs() {
 }
 
 // Copy vendor files from /node_modules into /vendor
-function copy(done) {
-  gulp.src([
-    'node_modules/bootstrap/dist/**/*',
-    '!**/npm.js',
-    '!**/bootstrap-theme.*',
-    '!**/*.map'
-  ])
-    .pipe(gulp.dest('vendor/bootstrap'));
+function copy() {
+  const copyTasks = [
+    gulp.src([
+      'node_modules/bootstrap/dist/**/*',
+      '!**/npm.js',
+      '!**/bootstrap-theme.*',
+      '!**/*.map'
+    ]).pipe(gulp.dest('vendor/bootstrap')),
 
-  gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
-    .pipe(gulp.dest('vendor/jquery'));
+    gulp.src(['node_modules/jquery/dist/jquery.js', 'node_modules/jquery/dist/jquery.min.js'])
+      .pipe(gulp.dest('vendor/jquery')),
 
-  gulp.src(['node_modules/jquery.easing/*.js'])
-    .pipe(gulp.dest('vendor/jquery-easing'));
+    gulp.src(['node_modules/jquery.easing/*.js'])
+      .pipe(gulp.dest('vendor/jquery-easing')),
 
-  gulp.src([
-    'node_modules/font-awesome/**',
-    '!node_modules/font-awesome/**/*.map',
-    '!node_modules/font-awesome/.npmignore',
-    '!node_modules/font-awesome/*.txt',
-    '!node_modules/font-awesome/*.md',
-    '!node_modules/font-awesome/*.json'
-  ])
-    .pipe(gulp.dest('vendor/font-awesome'));
+    gulp.src([
+      'node_modules/font-awesome/**',
+      '!node_modules/font-awesome/**/*.map',
+      '!node_modules/font-awesome/.npmignore',
+      '!node_modules/font-awesome/*.txt',
+      '!node_modules/font-awesome/*.md',
+      '!node_modules/font-awesome/*.json'
+    ]).pipe(gulp.dest('vendor/font-awesome')),
 
-  gulp.src([
-    'node_modules/devicons/**/*',
-    '!node_modules/devicons/*.json',
-    '!node_modules/devicons/*.md',
-    '!node_modules/devicons/!PNG',
-    '!node_modules/devicons/!PNG/**/*',
-    '!node_modules/devicons/!SVG',
-    '!node_modules/devicons/!SVG/**/*'
-  ])
-    .pipe(gulp.dest('vendor/devicons'));
+    gulp.src([
+      'node_modules/devicons/**/*',
+      '!node_modules/devicons/*.json',
+      '!node_modules/devicons/*.md',
+      '!node_modules/devicons/!PNG',
+      '!node_modules/devicons/!PNG/**/*',
+      '!node_modules/devicons/!SVG',
+      '!node_modules/devicons/!SVG/**/*'
+    ]).pipe(gulp.dest('vendor/devicons')),
 
-  gulp.src(['node_modules/simple-line-icons/**/*', '!node_modules/simple-line-icons/*.json', '!node_modules/simple-line-icons/*.md'])
-    .pipe(gulp.dest('vendor/simple-line-icons'));
+    gulp.src([
+      'node_modules/simple-line-icons/fonts/**',
+      'node_modules/simple-line-icons/css/**',
+      'node_modules/simple-line-icons/scss/**',
+      'node_modules/simple-line-icons/less/**'
+    ], { base: 'node_modules/simple-line-icons' })
+      .pipe(gulp.dest('vendor/simple-line-icons'))
+  ];
 
-  done();
+  return Promise.all(copyTasks.map(stream => new Promise((resolve, reject) => {
+    stream.on('finish', resolve).on('error', reject);
+  })));
 }
 
 // Watch files
