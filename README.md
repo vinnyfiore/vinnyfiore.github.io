@@ -1,57 +1,28 @@
 # vinnyfiore.com
 
-Personal portfolio website and resume for **Vinny Fiore** (Senior Software Engineer).
+Personal site and resume for **Vinny Fiore**, senior software engineer. Hosted on GitHub Pages at [vinnyfiore.com](https://vinnyfiore.com).
 
-Hosted via GitHub Pages at [vinnyfiore.com](https://vinnyfiore.com).
+The site is plain HTML and CSS, plus a little inline JavaScript, with no build step and no npm dependencies. Pushing to `master` deploys it.
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- **Node.js**: `>= 20.0.0` (LTS recommended, see `.nvmrc`)
-- **npm**: `>= 10.0.0`
-
-### Installation
+## Local development
 
 ```bash
-# Install dependencies
-npm install
+python3 -m http.server 8000
 ```
 
-### Local Development
+Then open <http://localhost:8000>.
 
-To start the local development server with live reload:
-
-```bash
-npm run dev
-# or
-npm start
-```
-
-### Build
-
-To compile SCSS, minify assets, and copy vendor files:
-
-```bash
-npm run build
-```
-
-## 📁 Project Structure
+## Project structure
 
 ```
-├── VincentFiore_Resume_26.pdf  # Current Resume PDF
-├── css/
-│   ├── modern.css              # Custom styles
-│   └── resume.css              # Legacy compiled styles
-├── img/                        # Profile and media assets
-├── js/
-│   └── modern.js               # Interactive frontend behavior
-├── vendor/                     # Third-party icons and vendor assets
-├── index.html                  # Main portfolio website
-├── gulpfile.js                 # Asset pipeline and build tasks
-└── package.json                # Project scripts and dependencies
+├── index.html                  # The page
+├── css/modern.css              # Styles, including dark mode
+├── img/                        # Favicon
+└── VincentFiore_Resume_26.pdf  # Current resume
 ```
 
-## 📄 License
+Web fonts come from Google Fonts.
+
+## License
 
 MIT

@@ -1,435 +1,402 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
+/* Theme copied from Cool Movies in NYC: its palette, type stacks, rules, and
+   paper texture. Layout: one column of ruled sections, each headed by a large
+   italic title, with listing rows that put a bold title opposite mono details. */
 :root {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    /* Slate-50 */
-    --text-primary: #0f172a;
-    /* Slate-900 */
-    --text-secondary: #64748b;
-    /* Slate-500 */
-    --accent: #2563eb;
-    /* Blue-600 */
-    --border-color: #e2e8f0;
-    /* Slate-200 */
-    --card-hover: #f1f5f9;
-    /* Slate-100 */
-    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --bg: #e4e6e1;
+    --fg: #111111;
+    --muted: #555950;
+    --rule: #b8bbb3;
+    --strong-rule: #24251f;
+
+    --emerald: #278465;
+    --orange: #bc5d30;
+    --pink: #c43c72;
+    --sky: #347e9d;
+    --mustard: #9d7813;
+    --lime: #62863c;
+    --fuchsia: #9a4b91;
+    --cyan: #24888e;
+    --amber: #a56820;
+    --violet: #6f64a6;
+    --teal: #287d78;
+    --rose: #a9505e;
+
+    --serif: Georgia, 'Times New Roman', Times, serif;
+    --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+    --sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+
+    --thick-rule: 0.42rem;
 }
 
-* {
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #090a08;
+        --fg: #e4e6e1;
+        --muted: #a9ada3;
+        --rule: #3e413a;
+        --strong-rule: #d5d8d0;
+
+        --emerald: #58b893;
+        --orange: #df8558;
+        --pink: #e96b9a;
+        --sky: #67a8c1;
+        --mustard: #c7a442;
+        --lime: #91b961;
+        --fuchsia: #c77abe;
+        --cyan: #5bb9bd;
+        --amber: #d29343;
+        --violet: #9d94cb;
+        --teal: #62aaa4;
+        --rose: #d27b87;
+
+        color-scheme: dark;
+    }
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
+}
+
+html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+    /* Stops anchor jumps from landing underneath the sticky top bar. */
+    scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 body {
     margin: 0;
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--serif);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    overflow-wrap: break-word;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Background Gradients */
-.gradient-bg {
+/* The faint paper texture from Cool Movies. */
+body::before {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: -1;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.03), transparent 25%),
-        radial-gradient(circle at 90% 80%, rgba(79, 70, 229, 0.03), transparent 25%);
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    content: '';
+    opacity: 0.18;
+    background-image:
+        repeating-linear-gradient(0deg, transparent 0, transparent 3px, rgba(20, 20, 16, 0.025) 4px),
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.32), transparent 24%);
+    mix-blend-mode: multiply;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 6px;
+@media (prefers-color-scheme: dark) {
+    body::before {
+        opacity: 0.08;
+        mix-blend-mode: screen;
+    }
 }
 
-::-webkit-scrollbar-track {
-    background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-}
-
-/* Typography */
 h1,
 h2,
 h3,
-h4 {
+p,
+ul {
     margin: 0;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    color: var(--text-primary);
+    padding: 0;
 }
 
-h1 {
-    font-size: 3.5rem;
-    line-height: 1.1;
-    /* Subtle gradient for text */
-    background: linear-gradient(to right, #0f172a, #334155);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 0.5rem;
-}
-
-h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    display: flex;
-    align-items: center;
-}
-
-h2::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border-color);
-    margin-left: 1.5rem;
-}
-
-h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.25rem;
+ul {
+    list-style: none;
 }
 
 a {
     color: inherit;
     text-decoration: none;
-    transition: var(--transition);
+    text-underline-offset: 0.18em;
 }
 
 a:hover {
-    color: var(--accent);
+    text-decoration: underline;
 }
 
-.subheading {
-    font-family: 'Inter', sans-serif;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+a:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--emerald);
+    outline-offset: 2px;
 }
 
-.text-primary {
-    color: var(--accent) !important;
+/* A script in index.html picks these at random on each load. The fallbacks
+   apply if JavaScript is off. */
+.accent-1 {
+    color: var(--accent-1, var(--emerald));
 }
 
-/* Specific text highlight for name in header */
-.text-highlight {
-    color: var(--text-secondary);
-    /* Or keep it dark, or use accent */
-    -webkit-text-fill-color: var(--text-secondary);
+.accent-2 {
+    color: var(--accent-2, var(--orange));
 }
 
-
-/* Layout */
-.app-container {
-    display: flex;
-    min-height: 100vh;
+.accent-3 {
+    color: var(--accent-3, var(--pink));
 }
 
-/* Sidebar */
-.sidebar {
-    width: 280px;
-    background: var(--bg-secondary);
-    border-right: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 2rem;
-    position: fixed;
-    height: 100vh;
+.accent-4 {
+    color: var(--accent-4, var(--sky));
+}
+
+/* Top bar
+   ========================================================================== */
+
+.topbar {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
     z-index: 10;
+    background: var(--bg);
+    border-top: var(--thick-rule) solid var(--strong-rule);
+    border-bottom: 1px solid var(--strong-rule);
 }
 
-.sidebar-header {
-    margin-bottom: 3rem;
+.topbar-inner,
+.page {
+    max-width: 56rem;
+    margin-inline: auto;
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
 }
 
-.profile-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 1.5rem;
-}
-
-.nav-menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex: 1;
-}
-
-.nav-item {
-    margin-bottom: 0.5rem;
-}
-
-.nav-link {
-    display: block;
-    padding: 0.75rem 0;
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    font-weight: 500;
-}
-
-.nav-link:hover,
-.nav-link.active {
-    color: var(--accent);
-    transform: translateX(4px);
-    font-weight: 600;
-}
-
-/* Content */
-.main-content {
-    flex: 1;
-    margin-left: 280px;
-    padding: 0;
-}
-
-section {
-    min-height: 100vh;
-    padding: 6rem 5rem;
+.topbar-inner {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-bottom: 1px solid var(--border-color);
+    gap: 1.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
 
-section:last-child {
-    border-bottom: none;
+.topbar-inner::-webkit-scrollbar {
+    display: none;
 }
 
-/* Cards / Items */
-.resume-item {
+.topbar li {
+    flex: none;
+}
+
+.topbar a {
     display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid transparent;
-    transition: var(--transition);
-}
-
-.resume-item:hover {
-    background: var(--card-hover);
-    border-color: var(--border-color);
-    box-shadow: var(--shadow-sm);
-}
-
-.resume-content {
-    flex: 1;
-}
-
-.resume-date {
+    align-items: center;
+    min-height: 2.75rem;
+    font-family: var(--sans);
     font-size: 0.875rem;
-    color: var(--text-secondary);
-    margin-top: 0.5rem;
-    min-width: 150px;
-    text-align: left;
-    font-weight: 500;
+    font-weight: 700;
+    line-height: 1;
 }
 
-@media (min-width: 768px) {
-    .resume-item {
-        flex-direction: row;
-        justify-content: space-between;
-    }
+/* Page and intro
+   ========================================================================== */
 
-    .resume-date {
-        text-align: right;
-        margin-top: 0;
-        margin-left: 2rem;
-    }
+.page {
+    display: grid;
+    gap: clamp(3rem, 7vw, 5rem);
+    padding-block: clamp(2rem, 6vw, 4rem) 2.5rem;
 }
 
-p.lead {
-    font-size: 1.15rem;
-    max-width: 600px;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
+.page::after {
+    content: '';
+    border-top: var(--thick-rule) solid var(--strong-rule);
 }
 
-/* Skills Grid */
-.skills-grid {
+.intro {
+    display: grid;
+    gap: 1.5rem;
+}
+
+h1 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.deck {
+    margin-top: 0.125rem;
+    color: var(--muted);
+    font-size: 1.125rem;
+    font-style: italic;
+    line-height: 1.45;
+}
+
+.intro > p {
+    max-width: 42rem;
+}
+
+.links {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
+    gap: 0 1.25rem;
 }
 
-.skill-icon {
-    font-size: 2.5rem;
-    color: var(--text-secondary);
-    transition: var(--transition);
+.links a {
+    display: inline-block;
+    padding: 0.5rem 0;
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    text-decoration: underline;
 }
 
-.skill-icon:hover {
-    color: var(--accent);
-    transform: scale(1.1);
+/* Sections
+   ========================================================================== */
+
+.section {
+    padding-top: 0.85rem;
+    border-top: 2px solid var(--strong-rule);
 }
 
-.skills-category {
-    margin-bottom: 1.5rem;
+h2 {
+    margin-bottom: 1rem;
+    font-size: 1.1875rem;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-.skills-category h4 {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 0.35rem;
+.group {
+    margin-top: clamp(3rem, 7vw, 5rem);
 }
 
-.skills-category p {
-    color: var(--text-secondary);
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-}
-
-.btn-resume {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    font-weight: 500;
-    font-size: 0.95rem;
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition);
-}
-
-.btn-resume:hover {
-    background: var(--accent);
-    color: #ffffff;
-    border-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
-}
-
-/* Utility */
-.social-icons {
-    display: flex;
-    gap: 1rem;
+summary {
     list-style: none;
-    padding: 0;
+    cursor: pointer;
 }
 
-.social-icons a {
+summary::-webkit-details-marker {
+    display: none;
+}
+
+.section-head {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #fff;
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    font-size: 1.2rem;
-    transition: var(--transition);
-    box-shadow: var(--shadow-sm);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.25rem 1.5rem;
 }
 
-.social-icons a:hover {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
+.section-head h2 {
+    margin-bottom: 0;
 }
 
-/* Helper classes */
-.mb-0 {
-    margin-bottom: 0 !important;
+.section-head:hover h2 {
+    text-decoration: underline;
 }
 
-.mb-5 {
-    margin-bottom: 3rem !important;
+.section-head h2::after {
+    content: '+';
+    margin-left: 0.3em;
+    font-family: var(--mono);
+    font-size: 0.9em;
+    font-style: normal;
+    font-weight: 400;
 }
 
-/* Responsive Mobile */
-@media (max-width: 992px) {
-    .app-container {
-        flex-direction: column;
+details[open] .section-head h2::after {
+    content: '\2212';
+}
+
+.work-preview {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+}
+
+details[open] .work-preview {
+    display: none;
+}
+
+details > .entries {
+    margin-top: 1rem;
+}
+
+/* Listing rows
+   ========================================================================== */
+
+.entries {
+    display: grid;
+    border-bottom: 1px solid var(--rule);
+}
+
+.entries > article {
+    padding-block: 0.82rem;
+    border-top: 1px solid var(--rule);
+}
+
+.entries > article:first-child {
+    border-top: 0;
+    padding-top: 0;
+}
+
+.entry-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.125rem 1.5rem;
+}
+
+h3 {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Project titles carry the outbound arrow Cool Movies uses on theater links. */
+h3 a::after {
+    content: ' \2197';
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.75em;
+    font-weight: 400;
+}
+
+.meta {
+    color: var(--muted);
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.muted {
+    margin-top: 0.25rem;
+    color: var(--muted);
+}
+
+.details {
+    display: grid;
+    gap: 0.625rem;
+    max-width: 42rem;
+    margin-top: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Fits all four top bar labels from about 375px. Narrower phones swipe the row. */
+@media (max-width: 26rem) {
+    .topbar-inner {
+        gap: 0.625rem;
     }
 
-    .sidebar {
-        width: 100%;
-        height: auto;
-        position: relative;
-        flex-direction: row;
-        align-items: center;
-        padding: 1rem 1.5rem;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-        justify-content: space-between;
-    }
-
-    .sidebar-header {
-        margin-bottom: 0;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-    }
-
-    .sidebar-header h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0;
-    }
-
-    .sidebar-header .subheading {
-        display: none;
-    }
-
-    .main-content {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .nav-menu {
-        display: none;
-    }
-
-    .profile-img {
-        width: 42px;
-        height: 42px;
-        margin-bottom: 0;
-        border-width: 2px;
-    }
-
-    section {
-        padding: 4rem 1.5rem;
-    }
-
-    h1 {
-        font-size: 2.5rem;
+    .topbar a {
+        font-size: 0.75rem;
     }
 }
 
-/* Animations */
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-up.visible {
-    opacity: 1;
-    transform: translateY(0);
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }

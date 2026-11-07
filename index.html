@@ -3,231 +3,187 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Vinny Fiore - Senior Software Engineer Portfolio">
-  <meta name="author" content="Vinny Fiore">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Vinny Fiore | Senior Software Engineer</title>
-
-  <!-- Google Fonts: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="vendor/devicons/css/devicons.min.css" rel="stylesheet">
-  <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
-
-  <!-- New Modern Styles -->
+  <meta name="description" content="Vincent (Vinny) Fiore is a senior software engineer in New York who builds backend systems, cloud architecture, and AI-assisted engineering workflows.">
+  <meta name="author" content="Vinny Fiore">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vinny Fiore | Senior Software Engineer">
+  <meta property="og:description" content="Senior software engineer in New York building backend systems, cloud architecture, and AI-assisted engineering workflows.">
+  <meta property="og:url" content="https://vinnyfiore.com/">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&display=swap" rel="stylesheet">
   <link href="css/modern.css" rel="stylesheet">
+  <!-- Runs before the page paints, so section headers never flash their fallback colors. -->
+  <script>
+    (function () {
+      var colors = ['emerald', 'orange', 'pink', 'sky', 'mustard', 'lime', 'fuchsia', 'cyan', 'amber', 'violet', 'teal', 'rose'];
+      for (var i = 1; i <= 4; i++) {
+        var pick = i - 1 + Math.floor(Math.random() * (colors.length - i + 1));
+        var color = colors[pick];
+        colors[pick] = colors[i - 1];
+        colors[i - 1] = color;
+        document.documentElement.style.setProperty('--accent-' + i, 'var(--' + color + ')');
+      }
+    })();
+  </script>
 </head>
 
 <body>
+  <nav class="topbar" aria-label="Main">
+    <ul class="topbar-inner">
+      <li><a href="#work" onclick="document.getElementById('work-details').open = true">Work</a></li>
+      <li><a href="#majestic-35">Majestic 35</a></li>
+      <li><a href="#cool-movies">Cool Movies in NYC</a></li>
+      <li><a href="#next-mlb-game">Next MLB Game</a></li>
+    </ul>
+  </nav>
 
-  <!-- Background Gradients -->
-  <div class="gradient-bg"></div>
+  <main class="page">
 
-  <div class="app-container">
-
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar">
-      <div class="sidebar-header">
-        <img class="profile-img" src="img/profile.jpg" alt="Vinny Fiore">
-        <h3>Vinny Fiore</h3>
-        <p class="subheading">Senior Software Engineer</p>
+    <header class="intro">
+      <div>
+        <h1>Vinny Fiore</h1>
+        <p class="deck">Software Engineer, New York, NY</p>
       </div>
-      <ul class="nav-menu">
-        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+      <p>I build scalable backend systems, cloud architecture, and AI-assisted engineering workflows. I'm currently modernizing release tooling and engineering standards at Capital One. Previously I scaled genetic testing platforms at GeneDx. Outside of work, I like to build software about movies.</p>
+      <ul class="links">
+        <li><a href="VincentFiore_Resume_26.pdf" target="_blank" rel="noopener">Resume</a></li>
+        <li><a href="https://www.linkedin.com/in/vinnyfiore/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/vinnyfiore" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="mailto:vinrfiore@gmail.com">Email</a></li>
       </ul>
+    </header>
 
-      <div class="sidebar-footer">
-        <ul class="social-icons">
-          <li><a href="https://www.linkedin.com/in/vinnyfiore/" target="_blank" title="LinkedIn"><i
-                class="fa fa-linkedin"></i></a></li>
-          <li><a href="https://github.com/vinnyfiore" target="_blank" title="GitHub"><i class="fa fa-github"></i></a></li>
-          <li><a href="mailto:vinrfiore@gmail.com" title="Email"><i class="fa fa-envelope"></i></a></li>
-        </ul>
+    <section class="section" aria-labelledby="work">
+      <details id="work-details">
+        <summary class="section-head">
+          <h2 id="work" class="accent-1">Work</h2>
+          <span class="work-preview">Jobs, education, and skills</span>
+        </summary>
+        <div class="entries">
+          <article>
+            <div class="entry-head">
+              <h3>Senior Software Engineer</h3>
+              <p class="meta">Feb 2023 – Present</p>
+            </div>
+            <p class="muted">Capital One, New York, NY / Remote</p>
+            <ul class="details">
+              <li>Led the Go rearchitecture of legacy release pipeline flows, consolidating redundant API calls and cutting end-to-end response times by more than 50% across a system handling 700,000+ releases annually.</li>
+              <li>Architected an organization-wide error code API in Java, delivering real-time updates for more than 5,000 errors across 30+ sources of truth and 15+ teams.</li>
+              <li>Established reusable AI-assisted engineering standards through Claude Skills published to Capital One’s internal marketplace and adopted by dozens of engineers.</li>
+              <li>Built Model Context Protocol (MCP) servers that integrated Artifactory with engineers’ Claude Code environments, giving agents direct access to artifact metadata and eliminating manual context gathering.</li>
+              <li>Modernized critical background jobs on AWS Batch, cutting costs by 50%, raising uptime to 99.99%, and establishing the on-call runbooks the team continues to use.</li>
+              <li>Provided technical direction to contract engineers, mentored early-career engineers through their first production deliveries and year-long rotations, and served as a technical interviewer for 10+ engineering roles.</li>
+            </ul>
+          </article>
+
+          <article>
+            <div class="entry-head">
+              <h3>Software Engineer II</h3>
+              <p class="meta">Jun 2021 – Feb 2023</p>
+            </div>
+            <p class="muted">GeneDx (formerly Sema4), New York, NY / Remote</p>
+            <ul class="details">
+              <li>Built Kinesis ingestion pipelines processing genetic sequencing data with 100+ distinct markers per test, enabling real-time diagnostic availability for clinicians.</li>
+              <li>Engineered Node.js Lambdas and Step Functions for async processing of lab data across the company's largest testing suites, provisioned with Terraform.</li>
+              <li>Cut response times and memory usage by 90% with ElastiCache for Redis across multiple applications.</li>
+            </ul>
+          </article>
+
+          <article>
+            <div class="entry-head">
+              <h3>Senior Programmer</h3>
+              <p class="meta">Apr 2018 – Jun 2021</p>
+            </div>
+            <p class="muted">New York City Department of Investigation, New York, NY / Remote</p>
+            <ul class="details">
+              <li>Migrated a legacy COBOL database to a modern Java application, enabling efficient reporting and access to decades of data.</li>
+              <li>Developed Python scripts to automate investigative search tasks, reducing processing time from hours to minutes.</li>
+            </ul>
+          </article>
+
+          <article>
+            <div class="entry-head">
+              <h3>Software Engineering Intern</h3>
+              <p class="meta">Jan 2017 – Sep 2017</p>
+            </div>
+            <p class="muted">Major League Baseball, New York, NY</p>
+          </article>
+        </div>
+
+        <section class="section group" aria-labelledby="education">
+          <h2 id="education" class="accent-2">Education</h2>
+          <div class="entries">
+            <article>
+              <div class="entry-head">
+                <h3>Master of Science, Computer Science</h3>
+                <p class="meta">2017</p>
+              </div>
+              <p class="muted">Pace University, New York, NY</p>
+            </article>
+            <article>
+              <div class="entry-head">
+                <h3>Bachelor of Science, Computer Science</h3>
+                <p class="meta">2016</p>
+              </div>
+              <p class="muted">St. John's University, Jamaica, NY</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section group" aria-labelledby="skills">
+          <h2 id="skills" class="accent-3">Skills</h2>
+          <div class="entries">
+            <article>
+              <h3>Languages &amp; Frameworks</h3>
+              <p class="muted">Java, Go, Python, JavaScript / TypeScript, Swift, SQL, Spring, Node.js, Next.js</p>
+            </article>
+            <article>
+              <h3>AI &amp; Agentic Tooling</h3>
+              <p class="muted">Claude Code, MCP development, Claude Skills, Cursor, Windsurf, local LLM agent workflows</p>
+            </article>
+            <article>
+              <h3>Cloud &amp; Data</h3>
+              <p class="muted">AWS Certified Solutions Architect - Associate, Kubernetes, Terraform, Redis, SQL / NoSQL</p>
+            </article>
+          </div>
+        </section>
+      </details>
+    </section>
+
+    <section class="section" aria-labelledby="projects">
+      <h2 id="projects" class="accent-4">Projects</h2>
+      <div class="entries">
+        <article id="majestic-35">
+          <div class="entry-head">
+            <h3><a href="https://apps.apple.com/us/app/majestic-35/id1332222833" target="_blank" rel="noopener">Majestic 35</a></h3>
+            <p class="meta">Swift / SwiftUI</p>
+          </div>
+          <p class="muted">iOS app for sharing movies you've watched with friends.</p>
+        </article>
+
+        <article id="cool-movies">
+          <div class="entry-head">
+            <h3><a href="https://coolmovies-vert.vercel.app" target="_blank" rel="noopener">Cool Movies in NYC</a></h3>
+            <p class="meta">Next.js</p>
+          </div>
+          <p class="muted">Next.js site aggregating showtimes for repertory theaters in NYC and LA.</p>
+        </article>
+
+        <article id="next-mlb-game">
+          <div class="entry-head">
+            <h3><a href="https://trmnl.com/recipes/next-mlb-game-57244" target="_blank" rel="noopener">Next MLB Game</a></h3>
+            <p class="meta">Liquid / JavaScript</p>
+          </div>
+          <p class="muted">TRMNL plugin that shows your MLB team's next game.</p>
+        </article>
       </div>
-    </nav>
+    </section>
 
-    <!-- Main Content -->
-    <main class="main-content">
-
-      <!-- About Section -->
-      <section id="about" class="fade-in-up">
-        <h1 class="mb-0">Vincent <span class="text-highlight">Fiore</span></h1>
-        <div class="subheading mb-5">
-          Senior Software Engineer · New York, NY · <a href="mailto:vinrfiore@gmail.com"
-            class="text-primary">vinrfiore@gmail.com</a>
-        </div>
-        <p class="lead">
-          I'm a Software Engineer specializing in scalable backend systems, cloud architecture, and AI-assisted workflows.
-          I build robust solutions that solve complex problems.
-        </p>
-        <p class="lead">
-          Currently modernizing release tooling and AI-assisted engineering standards at Capital One. Previously scaling genetic testing platforms at GeneDx (formerly Sema4).
-        </p>
-        <div style="margin-top: 2rem;">
-          <a href="VincentFiore_Resume_26.pdf" target="_blank" class="btn-resume">
-            <i class="fa fa-file-pdf-o"></i> Download Resume
-          </a>
-        </div>
-      </section>
-
-      <!-- Experience Section -->
-      <section id="experience" class="fade-in-up">
-        <h2>Experience</h2>
-
-        <div class="resume-item">
-          <div class="resume-content">
-            <h3>Senior Software Engineer</h3>
-            <div class="subheading">Capital One · New York, NY / Remote</div>
-            <p>
-              • Led the Go rearchitecture of legacy release pipeline flows, consolidating redundant API calls and cutting end-to-end response times by more than 50% across a system handling 700,000+ releases annually.<br>
-              • Architected an organization-wide error code API in Java, delivering real-time updates for more than 5,000 errors across 30+ sources of truth and 15+ teams.<br>
-              • Established reusable AI-assisted engineering standards through Claude Skills published to Capital One’s internal marketplace and adopted by dozens of engineers.<br>
-              • Built Model Context Protocol (MCP) servers that integrated Artifactory with engineers’ Claude Code environments, giving agents direct access to artifact metadata and eliminating manual context gathering.<br>
-              • Modernized critical background jobs on AWS Batch, cutting costs by 50%, raising uptime to 99.99%, and establishing the on-call runbooks the team continues to use.<br>
-              • Provided technical direction to contract engineers, mentored early-career engineers through their first production deliveries and year-long rotations, and served as a technical interviewer for 10+ engineering roles.
-            </p>
-          </div>
-          <div class="resume-date">
-            Feb 2023 – Present
-          </div>
-        </div>
-
-        <div class="resume-item">
-          <div class="resume-content">
-            <h3>Software Engineer II</h3>
-            <div class="subheading">GeneDx (formerly Sema4) · New York, NY / Remote</div>
-            <p>
-              • Built Kinesis ingestion pipelines processing genetic sequencing data with 100+ distinct markers per test, enabling real-time diagnostic availability for clinicians.<br>
-              • Engineered Node.js Lambdas and Step Functions for async processing of lab data across the company's largest testing suites, provisioned with Terraform.<br>
-              • Cut response times and memory usage by 90% with ElastiCache for Redis across multiple applications.
-            </p>
-          </div>
-          <div class="resume-date">
-            Jun 2021 – Feb 2023
-          </div>
-        </div>
-
-        <div class="resume-item">
-          <div class="resume-content">
-            <h3>Senior Programmer</h3>
-            <div class="subheading">New York City Department of Investigation · New York, NY / Remote</div>
-            <p>
-              • Migrated a legacy COBOL database to a modern Java application, enabling efficient reporting and access to decades of data.<br>
-              • Developed Python scripts to automate investigative search tasks, reducing processing time from hours to minutes.
-            </p>
-          </div>
-          <div class="resume-date">
-            Apr 2018 – Jun 2021
-          </div>
-        </div>
-
-        <div class="resume-item">
-          <div class="resume-content">
-            <h3>Software Engineering Intern</h3>
-            <div class="subheading">Major League Baseball · New York, NY</div>
-          </div>
-          <div class="resume-date">
-            Jan 2017 – Sep 2017
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Projects Section -->
-      <section id="projects" class="fade-in-up">
-        <h2>Projects</h2>
-
-        <div class="resume-item">
-          <div class="resume-content">
-            <h3>Majestic 35</h3>
-            <div class="subheading">iOS App (Swift / SwiftUI)</div>
-            <p>
-              iOS app for sharing movie reviews with friends.
-              <br><a href="https://apps.apple.com/us/app/majestic-35/id1332222833" target="_blank" class="text-primary">On the App Store <i class="fa fa-external-link"></i></a>
-            </p>
-          </div>
-        </div>
-
-        <div class="resume-item">
-          <div class="resume-content">
-            <h3>Cool Movies in NYC</h3>
-            <div class="subheading">Next.js Web App</div>
-            <p>
-              Next.js site aggregating showtimes for NYC repertory theaters.
-              <br><a href="https://coolmovies-vert.vercel.app" target="_blank" class="text-primary">Live now <i class="fa fa-external-link"></i></a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Skills Section -->
-      <section id="skills" class="fade-in-up">
-        <h2>Skills</h2>
-        <div class="subheading mb-3">Programming Languages & Tools</div>
-
-        <div class="skills-grid">
-          <i class="devicons devicons-java skill-icon" title="Java"></i>
-          <i class="devicons devicons-go skill-icon" title="Go"></i>
-          <i class="devicons devicons-python skill-icon" title="Python"></i>
-          <i class="devicons devicons-javascript skill-icon" title="JavaScript / TypeScript"></i>
-          <i class="devicons devicons-swift skill-icon" title="Swift"></i>
-          <i class="devicons devicons-nodejs skill-icon" title="Node.js"></i>
-          <i class="devicons devicons-aws skill-icon" title="AWS"></i>
-          <i class="devicons devicons-redis skill-icon" title="Redis"></i>
-          <i class="devicons devicons-postgresql skill-icon" title="PostgreSQL / SQL"></i>
-          <i class="devicons devicons-git skill-icon" title="Git"></i>
-          <i class="devicons devicons-docker skill-icon" title="Docker / Kubernetes"></i>
-        </div>
-
-        <div class="skills-category">
-          <h4>Languages & Frameworks</h4>
-          <p>Java, Go, Python, JavaScript / TypeScript, Swift, SQL, Spring, Node.js, Next.js</p>
-        </div>
-
-        <div class="skills-category">
-          <h4>AI & Agentic Tooling</h4>
-          <p>Claude Code, MCP development, Claude Skills, Cursor, Windsurf, local LLM agent workflows</p>
-        </div>
-
-        <div class="skills-category">
-          <h4>Cloud & Data</h4>
-          <p>AWS Certified Solutions Architect - Associate, Kubernetes, Terraform, Redis, SQL / NoSQL</p>
-        </div>
-      </section>
-
-      <!-- Education Section -->
-      <section id="education" class="fade-in-up">
-        <h2>Education</h2>
-
-        <div class="resume-item">
-          <div class="resume-content">
-            <h3>Master of Science, Computer Science</h3>
-            <div class="subheading">Pace University · New York, NY</div>
-          </div>
-          <div class="resume-date">2017</div>
-        </div>
-
-        <div class="resume-item">
-          <div class="resume-content">
-            <h3>Bachelor of Science, Computer Science</h3>
-            <div class="subheading">St. John's University · Jamaica, NY</div>
-          </div>
-          <div class="resume-date">2016</div>
-        </div>
-      </section>
-
-    </main>
-  </div>
-
-  <!-- Scripts -->
-  <script src="js/modern.js"></script>
-
+  </main>
 </body>
 
 </html>
