@@ -174,7 +174,9 @@ summary:focus-visible {
 
 .topbar-inner {
     display: flex;
-    gap: 1.5rem;
+    /* Spacing and text scale with the screen so all four links stay on one row.
+       The scrolling is only a safety net for a wider fallback font. */
+    gap: min(1.5rem, 2.6vw);
     overflow-x: auto;
     scrollbar-width: none;
 }
@@ -192,7 +194,7 @@ summary:focus-visible {
     align-items: center;
     min-height: 2.75rem;
     font-family: var(--sans);
-    font-size: 0.875rem;
+    font-size: min(0.875rem, 3.2vw);
     font-weight: 700;
     line-height: 1;
 }
@@ -277,12 +279,12 @@ summary::-webkit-details-marker {
     display: none;
 }
 
+/* The whole row is the tap target, about 48px tall. The negative margins cancel
+   the padding so the larger target doesn't change the spacing around it. */
 .section-head {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.25rem 1.5rem;
+    padding-block: 0.8rem;
+    margin-block: -0.8rem;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .section-head h2 {
@@ -293,27 +295,23 @@ summary::-webkit-details-marker {
     text-decoration: underline;
 }
 
+/* A chevron that points right when closed and down when open. */
 .section-head h2::after {
-    content: '+';
-    margin-left: 0.3em;
-    font-family: var(--mono);
-    font-size: 0.9em;
-    font-style: normal;
-    font-weight: 400;
+    content: '';
+    display: inline-block;
+    width: 0.42em;
+    height: 0.42em;
+    margin-left: 0.5em;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    vertical-align: 0.12em;
+    transform: rotate(45deg);
+    transition: transform 0.15s ease;
 }
 
 details[open] .section-head h2::after {
-    content: '\2212';
-}
-
-.work-preview {
-    color: var(--muted);
-    font-family: var(--mono);
-    font-size: 0.8125rem;
-}
-
-details[open] .work-preview {
-    display: none;
+    vertical-align: 0.22em;
+    transform: rotate(135deg);
 }
 
 details > .entries {
@@ -384,19 +382,12 @@ h3 a::after {
     margin-bottom: 0.5rem;
 }
 
-/* Fits all four top bar labels from about 375px. Narrower phones swipe the row. */
-@media (max-width: 26rem) {
-    .topbar-inner {
-        gap: 0.625rem;
-    }
-
-    .topbar a {
-        font-size: 0.75rem;
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
+    }
+
+    .section-head h2::after {
+        transition: none;
     }
 }
