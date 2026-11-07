@@ -380,6 +380,12 @@ h3 a::after {
     max-width: 42rem;
     margin-top: 0.875rem;
     margin-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    list-style: disc;
+}
+
+.details li::marker {
+    color: var(--muted);
 }
 
 @media (prefers-reduced-motion: reduce) {
